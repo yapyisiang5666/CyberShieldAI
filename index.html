@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="CyberShield AI detects suspicious messages and screenshots with real AI.">
+  <title>CyberShield AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="#home"><img src="logo.png" alt="CyberShield logo"><span>CyberShield <b>AI</b></span></a>
+  <nav><a href="#detector">Detector</a><a href="#escape">AI Escape Room</a><a href="#learn">Learn</a><a href="#protect">Protect</a><a href="#quiz">Quiz</a></nav>
+  <button id="openKey" class="key-btn"><i id="keyDot"></i><span id="keyText">Connect AI</span></button>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <span class="kicker">STUDENT CYBERSECURITY PROJECT</span>
+    <h1>Pause.<br>Check.<br><em>Protect.</em></h1>
+    <p>Analyse suspicious messages, links and screenshots with real AI. Learn how personal information is stolen and what to do before responding.</p>
+    <div class="actions"><a class="primary" href="#detector">Try AI Detection</a><a class="secondary" href="#learn">Safety Guide</a></div>
+    <div class="ticks"><span>✓ Text</span><span>✓ Screenshots</span><span>✓ Explainable results</span></div>
+  </div>
+  <div class="visual">
+    <div class="phone">
+      <small>Unknown sender</small>
+      <div class="bubble">Your bank account will be blocked today.</div>
+      <div class="bubble">Click this link and send your OTP now.</div>
+      <div class="scan"></div>
+      <div class="alert">● High-risk scam pattern detected</div>
+    </div>
+    <span class="tag t1">Urgency</span><span class="tag t2">Unknown link</span><span class="tag t3">OTP request</span>
+  </div>
+</section>
+
+<section class="dark" id="detector">
+  <div class="heading"><div><span class="kicker">REAL AI INTERACTION</span><h2>AI Scam & Privacy Detector</h2></div><p>Paste text, upload a screenshot, or press Ctrl/Command + V. The AI explains suspicious signs in simple English.</p></div>
+  <div class="detector-grid">
+    <div class="panel">
+      <div class="tabs"><button class="tab active" data-tab="text">Paste Text</button><button class="tab" data-tab="image">Screenshot</button></div>
+      <div id="textPanel" class="tab-panel active">
+        <label for="message">Message, email, link or call transcript</label>
+        <textarea id="message" maxlength="6000" placeholder="Example: Your parcel is held. Pay RM2 immediately using this unknown link..."></textarea>
+        <div class="under"><button id="sample">Load sample</button><span><b id="count">0</b>/6000</span></div>
+      </div>
+      <div id="imagePanel" class="tab-panel">
+        <div id="drop" class="drop" tabindex="0">
+          <input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          <strong>↑</strong><h3>Drop, choose, or paste a screenshot</h3><p>PNG, JPG or WEBP · Maximum 8 MB</p><button id="choose" class="secondary">Choose Image</button>
+        </div>
+        <div id="previewWrap" class="preview hidden"><img id="preview" alt="Screenshot preview"><button id="remove">Remove</button></div>
+      </div>
+      <p class="privacy">🔒 The key is kept only in this browser session. Never use a key with a high spending limit.</p>
+      <button id="analyse" class="analyse"><span>Analyse with AI</span><b>→</b></button>
+    </div>
+
+    <div class="panel result">
+      <div id="empty" class="state"><div class="radar"></div><h3>Ready to inspect</h3><p>Your AI safety report will appear here.</p></div>
+      <div id="loading" class="state hidden"><div class="loader"></div><h3>AI is checking the evidence…</h3><p>Looking for impersonation, urgency, unsafe links, payment requests and privacy risks.</p></div>
+      <div id="report" class="hidden">
+        <div class="report-head"><div><small>AI SAFETY REPORT</small><h3 id="verdict">High Risk</h3></div><div id="ring" class="ring"><strong id="score">0</strong><small>/100</small></div></div>
+        <div class="confidence"><span>AI confidence</span><div><i id="bar"></i></div><b id="confidence">0%</b></div>
+        <h4>What the AI noticed</h4><div id="signals" class="signals"></div>
+        <h4>Recommended action</h4><p id="recommendation"></p>
+        <h4>Simple explanation</h4><p id="explanation"></p>
+        <div class="disclaimer">AI can make mistakes. Never share passwords, OTPs, banking details or identity documents. Verify urgent requests through an official channel.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="escape-section" id="escape">
+  <div class="escape-top">
+    <div>
+      <span class="kicker">REAL INTERACTIVE AI GAME</span>
+      <h2>AI Scam Escape Room</h2>
+      <p>Escape five digital rooms by investigating messages, choosing safe actions, collecting evidence and defeating the final AI scam boss.</p>
+    </div>
+    <div class="game-stats" aria-label="Game statistics">
+      <div><small>ROOM</small><b id="roomStat">1/5</b></div>
+      <div><small>SAFETY XP</small><b id="xpStat">0</b></div>
+      <div><small>SHIELDS</small><b id="livesStat">♥ ♥ ♥</b></div>
+      <div><small>TIME</small><b id="timeStat">01:30</b></div>
+    </div>
+  </div>
+
+  <div class="escape-shell">
+    <aside class="room-map">
+      <div class="map-title"><span>MISSION MAP</span><b id="mapProgress">0%</b></div>
+      <div class="map-line"><i id="mapLine"></i></div>
+      <button class="room-node active" data-room-node="0"><span>01</span><div><b>JuneBank Alert</b><small>Impersonation</small></div><i>●</i></button>
+      <button class="room-node locked" data-room-node="1"><span>02</span><div><b>Parcel Trap</b><small>Phishing link</small></div><i>●</i></button>
+      <button class="room-node locked" data-room-node="2"><span>03</span><div><b>Dream Job</b><small>Advance fee</small></div><i>●</i></button>
+      <button class="room-node locked" data-room-node="3"><span>04</span><div><b>Family Emergency</b><small>Identity trick</small></div><i>●</i></button>
+      <button class="room-node locked" data-room-node="4"><span>05</span><div><b>AI Boss Battle</b><small>Deepfake scam</small></div><i>●</i></button>
+      <button id="newAiMission" class="ai-mission-btn">✦ Generate AI Bonus Mission</button>
+    </aside>
+
+    <div class="game-stage">
+      <div class="stage-toolbar">
+        <div class="stage-status"><i></i><span id="roomCategory">BANK IMPERSONATION</span></div>
+        <button id="soundToggle" class="icon-btn" title="Toggle sound">♪</button>
+      </div>
+
+      <div class="scene" id="gameScene">
+        <div class="scene-glow"></div>
+        <div class="game-phone">
+          <div class="game-phone-head">
+            <div class="avatar" id="senderAvatar">JB</div>
+            <div><b id="senderName">JuneBank Security</b><small id="senderMeta">Unknown mobile number · now</small></div>
+            <span>•••</span>
+          </div>
+          <div class="game-chat" id="gameChat"></div>
+          <div class="typing hidden" id="typingIndicator"><i></i><i></i><i></i></div>
+        </div>
+
+        <div class="evidence-board">
+          <div class="evidence-head"><span>EVIDENCE BOARD</span><b><span id="clueCount">0</span>/<span id="clueTotal">3</span> found</b></div>
+          <p>Click suspicious parts inside the message before choosing your action.</p>
+          <div id="evidenceList" class="evidence-list">
+            <span class="empty-evidence">No evidence collected yet.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mission-panel">
+        <div class="mission-question">
+          <small>YOUR DECISION</small>
+          <h3 id="missionQuestion">What should you do next?</h3>
+        </div>
+        <div class="choice-grid" id="choiceGrid"></div>
+      </div>
+
+      <div class="coach-panel hidden" id="coachPanel">
+        <div class="coach-avatar">AI</div>
+        <div>
+          <span id="coachBadge">AI SAFETY COACH</span>
+          <h3 id="coachTitle">Smart decision!</h3>
+          <p id="coachText"></p>
+          <div class="reward-row">
+            <span id="rewardXp">+0 XP</span>
+            <span id="rewardClue">Evidence reviewed</span>
+          </div>
+        </div>
+        <button id="nextRoom" class="primary">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="achievement-row">
+    <div class="achievement locked" id="badgeDetective"><span>⌕</span><div><b>Sharp Detective</b><small>Find every clue in one room</small></div></div>
+    <div class="achievement locked" id="badgeGuardian"><span>♢</span><div><b>JuneBank Guardian</b><small>Stop the bank impersonation</small></div></div>
+    <div class="achievement locked" id="badgeHero"><span>★</span><div><b>Cyber Hero</b><small>Escape all five rooms</small></div></div>
+  </div>
+</section>
+
+<section id="learn">
+  <div class="center"><span class="kicker">HOW INFORMATION GETS STOLEN</span><h2>Recognise the attack before it works</h2><p>Cybercriminals often target human trust before they target technology.</p></div>
+  <div class="cards">
+    <article><i>↗</i><h3>Suspicious websites, apps & links</h3><p>Fake login pages, cloned shops, malicious downloads and shortened links can steal passwords or install harmful software.</p><b>Check domain spelling, permissions and the official source.</b></article>
+    <article><i>⌁</i><h3>Weak device protection</h3><p>Outdated systems, reused passwords, disabled security tools and unsafe public Wi-Fi make information easier to access.</p><b>Update devices and use unique passwords with 2FA.</b></article>
+    <article><i>◉</i><h3>Impersonation calls & messages</h3><p>Scammers pretend to be banks, insurers, police, delivery services, employers, friends or family members.</p><b>End the conversation and verify independently.</b></article>
+  </div>
+</section>
+
+<section class="protect" id="protect">
+  <div><span class="kicker">PREVENTION PLAN</span><h2>Three checks can stop many scams</h2>
+    <div class="steps">
+      <div><b>01</b><span><h3>Stop and inspect</h3><p>Look for urgency, fear, rewards, unusual payments and unknown links.</p></span></div>
+      <div><b>02</b><span><h3>Verify independently</h3><p>Use the official app, website or phone number—not details supplied by the sender.</p></span></div>
+      <div><b>03</b><span><h3>Protect and report</h3><p>Block the sender, preserve evidence, change exposed passwords and contact the bank quickly.</p></span></div>
+    </div>
+  </div>
+  <div class="checklist">
+    <div><span>Safety checklist</span><b id="progressText">0%</b></div>
+    <label><input class="check" type="checkbox"> I use unique strong passwords.</label>
+    <label><input class="check" type="checkbox"> I enable two-factor authentication.</label>
+    <label><input class="check" type="checkbox"> I inspect links before opening them.</label>
+    <label><input class="check" type="checkbox"> I never share OTPs or passwords.</label>
+    <label><input class="check" type="checkbox"> I verify unusual requests separately.</label>
+    <div class="progress"><i id="progressBar"></i></div><p id="progressMsg">Start building your safety habits.</p>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="center"><span class="kicker">INTERACTIVE LEARNING</span><h2>Can you spot the scam?</h2></div>
+  <div class="quiz">
+    <small>Unknown number</small>
+    <p>“Congratulations! You won a RM5,000 voucher. Pay a RM10 processing fee within 15 minutes to claim it.”</p>
+    <div><button data-answer="safe">Probably safe</button><button data-answer="verify">Verify first</button><button data-answer="scam">Likely a scam</button></div>
+    <aside id="feedback" class="hidden"></aside>
+  </div>
+</section>
+
+<section class="impact">
+  <div class="heading"><div><span class="kicker">PROJECT IMPACT</span><h2>Built for learning, not fear</h2></div><p>The system explains warning signs and safer actions instead of claiming perfect detection accuracy.</p></div>
+  <div class="metrics"><div><b>3</b><span>Input methods</span></div><div><b>5+</b><span>Risk signals</span></div><div><b>1</b><span>Real AI report</span></div><div><b>0</b><span>Passwords requested</span></div></div>
+</section>
+</main>
+
+<footer><div class="brand"><img src="logo.png" alt=""><span>CyberShield AI</span></div><p>Educational assistance only. This does not replace advice from banks, authorities or cybersecurity professionals.</p><span>© 2026 Student Project</span></footer>
+
+
+<div id="gameCompleteModal" class="modal-bg hidden">
+  <div class="modal game-complete">
+    <div class="trophy">★</div>
+    <span class="kicker">ESCAPE COMPLETED</span>
+    <h2>You are a Cyber Hero!</h2>
+    <p>You protected every victim, defeated the AI scam boss and completed the safety investigation.</p>
+    <div class="final-score">
+      <div><small>FINAL XP</small><b id="finalXp">0</b></div>
+      <div><small>CLUES</small><b id="finalClues">0</b></div>
+      <div><small>RANK</small><b id="finalRank">Guardian</b></div>
+    </div>
+    <button id="restartGame" class="primary">Play Again</button>
+  </div>
+</div>
+
+<div id="modal" class="modal-bg hidden">
+  <div class="modal">
+    <button id="close" class="close">×</button><span class="kicker">CONNECT REAL AI</span><h2>Enter your OpenAI API key</h2>
+    <p>The key is stored only in sessionStorage and disappears when the browser session ends. A serverless proxy is safer for public deployment.</p>
+    <label>OpenAI API key</label><div class="key-field"><input id="apiKey" type="password" placeholder="sk-..."><button id="showKey">Show</button></div>
+    <label>Vision-capable model</label><select id="model"><option>gpt-4.1-mini</option><option>gpt-4.1</option><option>gpt-4o-mini</option></select>
+    <div class="modal-actions"><button id="deleteKey">Remove key</button><button id="saveKey" class="primary">Save for this session</button></div><p id="modalMsg"></p>
+  </div>
+</div>
+<script src="script.js"></script>
+</body></html>
